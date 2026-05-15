@@ -11,6 +11,8 @@ data = pd.read_csv(raw_data_path)
 data = data_preprocessing(data)
 data.to_csv(config["preprocessed_data_path"], index=False)
 
-model, X_test, y_test = train_model(data, )
+model, X_test, y_test = train_model(
+    data, test_size=config["test_size"], random_state=config["random_state"]
+)
 evaluate_model(model, X_test, y_test)
 save_model(model, config["model_save_path"])
